@@ -27,13 +27,19 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - uses: mr-smithers-excellent/docker-build-push@v6
-      name: Build & push Docker image
-      with:
-        image: dockpavan/jenkins-demo
-        tags: v1, latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: List build directory
+      run: ls -R build
+      
+    - name: List files before Docker build
+      run: ls -R
+      
+    # - uses: mr-smithers-excellent/docker-build-push@v6
+    #   name: Build & push Docker image
+    #   with:
+    #     image: dockpavan/jenkins-demo
+    #     tags: v1, latest
+    #     registry: docker.io
+    #     dockerfile: Dockerfile
+    #     username: ${{ secrets.DOCKER_USERNAME }}
+    #     password: ${{ secrets.DOCKER_PASSWORD }}
          
